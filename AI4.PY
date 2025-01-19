@@ -42,23 +42,23 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import os
 
-# Definirea variabilelor necsare
+
 ncols = 4
 nrows = 5
 pic_index = 0  # Indexul imaginilor care urmează să fie afișate
 
-# Set up matplotlib fig, and size it to fit 4x4 pics
+
 fig = plt.gcf()
 fig.set_size_inches(ncols * 5, nrows * 5)
 
-# Actualizează pic_index și pregătește calea fișierelor
+
 pic_index += 8
 next_horse_pix = [os.path.join(train_horse_dir, fname) 
                   for fname in train_horse_names[pic_index-8:pic_index]]
 next_human_pix = [os.path.join(train_human_dir, fname) 
                   for fname in train_human_names[pic_index-8:pic_index]]
 
-# Asigură-te că avem destule imagini de afișat
+
 if len(next_horse_pix) + len(next_human_pix) > ncols * nrows:
     print("Prea multe imagini pentru dimensiunile alese!")
 else:
