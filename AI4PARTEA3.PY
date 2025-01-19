@@ -26,7 +26,6 @@ successive_feature_maps = visualization_model.predict(x)
 
 layer_names = [layer.name for layer in model.layers]
  
-# Now let's display our representations
 for layer_name, feature_map in zip(layer_names, successive_feature_maps):
   if len(feature_map.shape) == 4:
  
@@ -46,7 +45,8 @@ for layer_name, feature_map in zip(layer_names, successive_feature_maps):
       x = np.clip(x, 0, 255).astype('uint8')
       # We'll tile each filter into this big horizontal grid
       display_grid[:, i * size : (i + 1) * size] = x
-    # Display the grid
+
+
     scale = 20. / n_features
     plt.figure(figsize=(scale * n_features, scale))
     plt.title(layer_name)
