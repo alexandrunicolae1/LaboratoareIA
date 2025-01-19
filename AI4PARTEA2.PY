@@ -6,7 +6,6 @@ import tensorflow as tf
 from tensorflow.keras.optimizers import RMSprop
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
-# Calea pentru fișierul ZIP
 local_zip = r'E:\Visual Studio Code\Facultate\inteligenta artificiala\horse-or-human'
 
 if os.path.exists(local_zip):
@@ -23,7 +22,6 @@ else:
 train_horse_dir = r'E:\Visual Studio Code\Facultate\inteligenta artificiala\horse-or-human\horses'
 train_human_dir = r'E:\Visual Studio Code\Facultate\inteligenta artificiala\horse-or-human\humans'
 
-# Verifică existența directoarelor și afișează fișierele
 if os.path.isdir(train_horse_dir):
     train_horse_names = os.listdir(train_horse_dir)
     print(train_horse_names[:10])
@@ -60,7 +58,6 @@ for i, img_path in enumerate(next_horse_pix + next_human_pix):
 
 plt.show()
 
-# Definirea modelului CNN
 model = tf.keras.models.Sequential([
     tf.keras.layers.Conv2D(16, (3,3), activation='relu', input_shape=(300, 300, 3)),
     tf.keras.layers.MaxPooling2D(2, 2),
@@ -82,10 +79,8 @@ model.compile(loss='binary_crossentropy',
               metrics=['acc'])
 model.summary()
 
-# Preprocesarea imaginilor
 train_datagen = ImageDataGenerator(rescale=1./255)
 
-# Încărcarea imaginilor din directorul corect
 train_generator = train_datagen.flow_from_directory(
     r'E:\Visual Studio Code\Facultate\inteligenta artificiala\horse-or-humann',  
     target_size=(300, 300),
